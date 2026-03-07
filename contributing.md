@@ -8,7 +8,7 @@ Repo: https://github.com/CodeYourFuture/Module-Template
 
 Use Git & Github to submit your coursework as a pull request.
 
-[Creating a pull request](https://curriculum.codeyourfuture.io/guides/create-a-pull-request/)
+[Creating a pull request](https://curriculum.codeyourfuture.io/guides/reviewing/trainee-pr-guide/#what-is-a-pull-request-pr)
 
 ## Questions & Help
 
