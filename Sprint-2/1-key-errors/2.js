@@ -16,11 +16,15 @@
 // not allowed in JavaScript. Parameter names must be valid identifiers, and '3' is a number, not a valid identifier. To fix this error, we can change the parameter name to something valid, such as 'num'. The corrected code would be:
 // Finally, correct the code to fix the problem
 
+// function square(3) {  // invalid parameter name
+//   return num * num;
+// }
 // =============> write your new code here
 function square(num) {
     return num * num;
 }
-console.log(square(5)); // Output: 25
+console.log(square(5));  // 25 ✓
+console.log(square(10)); // 100 ✓
 
 
 

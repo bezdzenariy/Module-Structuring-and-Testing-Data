@@ -8,12 +8,11 @@
 
 function convertToPercentage(decimalNumber) {
   // =============> deleted const percentage. new code here
-  const percentage = `${decimalNumber * 100}%`;
-
-  return percentage;
+  return `${decimalNumber * 100}%`;
 }
 
-console.log(convertToPercentage(0.5));
+console.log(convertToPercentage(0.5));   // "50%" ✓
+console.log(convertToPercentage(0.25));  // "25%" ✓
 
 // =============> write your explanation here
 

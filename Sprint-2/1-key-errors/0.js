@@ -1,6 +1,6 @@
 // Predict and explain first...
 //  =============> write your prediction here
-// I predict that the error is occurring because there is a variable name conflict. The parameter 'str' is being redeclared inside the function, which is not allowed in JavaScript. This will cause a syntax error because we cannot declare a variable with the same name as a parameter within the same scope.
+// error occurring because of a variable name conflict. The parameter 'str' is being redeclared inside the function, which is not allowed in JavaScript. This will cause a syntax error because we cannot declare a variable with the same name as a parameter within the same scope.
 // call the function capitalise with a string input
 // interpret the error message and figure out why an error is occurring
 
