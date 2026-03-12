@@ -1,4 +1,4 @@
-const movieLength = 8784; // length of movie in seconds
+const movieLength = 65; // length of movie in seconds
 
 const remainingSeconds = movieLength % 60;
 const totalMinutes = (movieLength - remainingSeconds) / 60;
@@ -6,7 +6,9 @@ const totalMinutes = (movieLength - remainingSeconds) / 60;
 const remainingMinutes = totalMinutes % 60;
 const totalHours = (totalMinutes - remainingMinutes) / 60;
 
-const result = `${totalHours}:${remainingMinutes}:${remainingSeconds}`;
+const pad = (num) => String(num).padStart(2, "0");
+
+const result = `${pad(totalHours)}:${pad(remainingMinutes)}:${pad(remainingSeconds)}`;
 console.log(result);
 
 // For the piece of code above, read the code and then answer the following questions
