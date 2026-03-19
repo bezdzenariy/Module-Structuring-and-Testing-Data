@@ -1,35 +1,41 @@
-// This is the latest solution to the problem from the prep.
-// Make sure to do the prep before you do the coursework
-// Your task is to write tests for as many different groups of input data or edge cases as you can, and fix any bugs you find.
+// Alternative solution using if-else blocks
+// This version is more explicit and easier to understand for beginners
+// Это альтернативное решение через if-else блоки - более явное и понятное
 
 function formatAs12HourClock(time) {
-  // takeing hours and minutes from input time string
+  // taking two first characters of time and convert to number
   const hours24 = Number(time.slice(0, 2));
+  // taking two last characters of time. let as string, no math needed
   const minutes = time.slice(3, 5);
   
   // convert 24 to 12-hour format and determine am/pm
-  const hours12 = (hours24 % 12) || 12;
-  const period = hours24 >= 12 ? "pm" : "am";
+  let hours12;
+  let period;
 
-  // format 24 to 12 hour and determine am/pm
-  // hours12 = (hours24 % 12) || 12: gives the remainder (13 % 12 = 1, 0 % 12 = 0)
-  // if result is 0 (midnight), replace with 12
-  // period = hours24 >= 12 ? "pm" : "am": if hours24 is 12 or more, it's pm, otherwise am
+  if (hours24 === 0) {
+    // midnight (00:xx) → 12:xx am
+    hours12 = 12;
+    period = "am";
+  } else if (hours24 < 12) {
+    // morning (01:xx - 11:xx) → remain unchanged + am
+    hours12 = hours24;
+    period = "am";
+  } else if (hours24 === 12) {
+    // Noon (12:xx) → 12:xx pm (no change in hours, just change period)
+    hours12 = 12;
+    period = "pm";
+  } else {
+    // Afternoon/Evening (13:xx - 23:xx) → subtract 12 from hours + pm
+    hours12 = hours24 - 12;
+    period = "pm";
+  }
 
-  // hours24 % 12: даёт остаток (13 % 12 = 1, 0 % 12 = 0)
-  // || 12: если результат 0 (полночь), заменяем на 12
-  
+  // formating hours with leading zero and return final string
   const formattedHours = String(hours12).padStart(2, '0');
   return `${formattedHours}:${minutes} ${period}`;
-  // Convert hours to string and pad with leading zero
 }
 
-console.assert(
-  formatAs12HourClock("13:35") === "01:35 pm",
-  "FAIL: 13:35 should be 01:35 pm"
-);
-
-// Test Group 1: Morning times (AM - Утренние часы)
+// Test Group 1: Morning times (AM - morning hours)
 console.log("=== Test Group 1: Morning (AM) ===");
 console.assert(
   formatAs12HourClock("08:00") === "08:00 am",
@@ -45,7 +51,7 @@ console.assert(
 );
 console.log("✓ All morning tests passed!\n");
 
-// Test Group 2: Noon hour (12:xx - Полдень)
+// Test Group 2: Noon hour (12:xx - Noon)
 console.log("=== Test Group 2: Noon (PM) ===");
 console.assert(
   formatAs12HourClock("12:00") === "12:00 pm",
@@ -57,7 +63,7 @@ console.assert(
 );
 console.log("✓ All noon tests passed!\n");
 
-// Test Group 3: Midnight/After-midnight (00:xx - Полночь)
+// Test Group 3: Midnight/After-midnight (00:xx - Midnight)
 console.log("=== Test Group 3: Midnight (AM) ===");
 console.assert(
   formatAs12HourClock("00:00") === "12:00 am",
@@ -69,7 +75,7 @@ console.assert(
 );
 console.log("✓ All midnight tests passed!\n");
 
-// Test Group 4: Afternoon/Evening (13:xx - 23:xx - День и вечер)
+// Test Group 4: Afternoon/Evening (13:xx - 23:xx - Afternoon and Evening)
 console.log("=== Test Group 4: Afternoon/Evening (PM) ===");
 console.assert(
   formatAs12HourClock("13:00") === "01:00 pm",
@@ -93,7 +99,7 @@ console.assert(
 );
 console.log("✓ All afternoon/evening tests passed!\n");
 
-// Test Group 5: Edge cases (Граничные случаи)
+// Test Group 5: Edge cases
 console.log("=== Test Group 5: Edge Cases ===");
 console.assert(
   formatAs12HourClock("06:00") === "06:00 am",
