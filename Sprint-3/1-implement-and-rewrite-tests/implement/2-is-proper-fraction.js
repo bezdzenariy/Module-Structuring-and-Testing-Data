@@ -8,9 +8,11 @@
 // write one test at a time, and make it pass, build your solution up methodically
 
 function isProperFraction(numerator, denominator) {
-  if (numerator < denominator) {
-    return true;
-  }
+  // if (numerator < denominator) {
+  //  return true;
+  // }
+
+  return Math.abs(numerator) < Math.abs(denominator);
 }
 
 // The line below allows us to load the isProperFraction function into tests in other files.
@@ -47,13 +49,30 @@ assertEquals(improperFraction, false);
 // Explanation: The fraction -4/7 is a proper fraction because the absolute value of the numerator (4) is less than the denominator (7). The function should return true.
 const negativeFraction = isProperFraction(-4, 7);
 // ====> complete with your assertion
+assertEquals(negativeFraction, true);
 
 // Equal Numerator and Denominator check:
 // Input: numerator = 3, denominator = 3
 // target output: false
 // Explanation: The fraction 3/3 is not a proper fraction because the numerator is equal to the denominator. The function should return false.
 const equalFraction = isProperFraction(3, 3);
+assertEquals(equalFraction, false);
 // ====> complete with your assertion
+
 
 // Stretch:
 // What other scenarios could you test for?
+// Zero Numerator check:
+const zeroNumerator = isProperFraction(0, 5);
+assertEquals(zeroNumerator, true);
+// 0/5 is a proper fraction because the numerator is less than the denominator, and it represents the value 0. The function should return true.
+
+// Zero Denominator check:
+const zeroDenominator = isProperFraction(5, 0);
+assertEquals(zeroDenominator, false);
+// 5/0 is not a proper fraction because division by zero is undefined. The function should return false or throw an error, depending on how you choose to handle this case in your implementation.  
+
+// negative Denominator check:
+const negativeDenominator = isProperFraction(4, -6 );
+assertEquals(negativeDenominator, true);
+// 4/-6 is a proper fraction because the absolute value of the numerator (4) is less than the absolute value of the denominator (6). The function should return true. 
