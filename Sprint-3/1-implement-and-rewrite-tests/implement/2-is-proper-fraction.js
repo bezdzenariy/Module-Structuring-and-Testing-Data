@@ -12,6 +12,8 @@ function isProperFraction(numerator, denominator) {
   //  return true;
   // }
 
+  // calculate the absolute values ​​(modules) of numbers, discarding minuses.
+  // return the result of the strict comparison (true or false).
   return Math.abs(numerator) < Math.abs(denominator);
 }
 
